@@ -101,7 +101,7 @@ for subject in list_subjs[:-1]:
                 print('Eigenvalues and eigenvectors successfully computed.')
 
                 #compute entropy production rate
-                sigma, pos,_ = compute_entropy_n(data_pca_patient, dt, n_iter=n_iter)
+                sigma, pos,_ = compute_entropy_n(data_pca_patient, dt, n_iter=n_iter, Np=Np)
             else:
                 sigma = np.NaN
 

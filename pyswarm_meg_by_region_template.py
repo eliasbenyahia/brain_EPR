@@ -156,7 +156,7 @@ for subject in list_subjs[:-1]:
                         print(data_pca_patient.shape)
 
                     #compute entropy production rate
-                    sigma_0, pos,_ = compute_entropy_n(data_pca_patient, dt, n_iter)
+                    sigma_0, pos,_ = compute_entropy_n(data_pca_patient, dt, n_iter, Np)
                     sigma[i] = sigma_0
     
             mydict = []
