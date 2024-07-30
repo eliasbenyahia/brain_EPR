@@ -12,9 +12,8 @@ import scipy.interpolate
 import scipy.stats
 
 
-# Import PySwarms
-import pyswarms as ps
-from pyswarms.utils.functions import single_obj as fx
+# Import entropy computations functions
+from entropy.ps_entropy import compute_entropy_n
 
 # Import pca and svd
 import sklearn.decomposition
@@ -23,55 +22,6 @@ from mne.source_estimate import _prepare_label_extraction
 
 
 import json 
-
-############################## functions ####################################
-
-
-def dLinear(data,pars):
-    dimension = data.shape[0]
-    pars_m = pars.reshape((dimension, dimension))
-    # print(pars_m.shape)
-    f = np.dot(pars_m, data)
-    # print('force shape: ', np.shape(f))
-    return f
-
-def compute_entropy_n(data, dt, n_iter=50):
-
-    dout = data
-    dimension, length=np.shape(dout)
-    optimizer = ps.single.LocalBestPSO(n_particles=Np, dimensions=dimension**2, options=options)
-    data_mid = (data[:,1:] + data[:,:length-1])/2
-    data_diff = data[:,1:] - data[:,:length-1]
-
-    
-    def costLinear(pars):  
-        # print(data_diff.shape)
-        # print(dLinear(data_mid,pars).shape)
-        JJ=np.sum(dLinear(data_mid,pars)* data_diff, axis=0)
-        return 2*(np.mean(JJ))*(np.mean(JJ))/(np.var(JJ)*dt)
-    
-    
-    def costLinear2(pars):  
-        # print(pars.shape)
-        return 1/(costLinear(pars)+1)
-    
-    def fun4(x):
-    #return x[:,0]**2+(x[:,1]-2)**2
-        dime = Np
-        cosi=np.zeros(Np)
-        b=x
-        # print(b.shape)
-        for im in range(Np):
-            cosi[im]=costLinear2(b[im,:])
-        return cosi
-    
-    cost, pos = optimizer.optimize(fun4, iters=n_iter)
-    sigma = 1/cost-1
-    return sigma, pos, [data_mid, data_diff]
-
-
-################################# Run ####################################
-
 
 # optimization parameters
 
