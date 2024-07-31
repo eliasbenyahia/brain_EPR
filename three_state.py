@@ -13,12 +13,12 @@ T = 50
 nu = 3
 dt = .001
 
-N = 5
+N = 10
 sigma_infered = np.zeros((N,5))
 sigma_ex = np.zeros((N,5))
 
 n_iter = 100
-Np = 200
+Np = 100
 
 for j,p in enumerate(prob):
     W = hms.asym_rw_trans_mat(Ns,p,nu)
@@ -34,12 +34,10 @@ for j,p in enumerate(prob):
         sigma_ex[k,j] = R/T
 
 output_dir_path = "output"
-
 if not os.path.isdir(output_dir_path):
     os.mkdir(output_dir_path)
 
 output_three_state_dir_path = os.path.join(output_dir_path, "three_state")
-
 if not os.path.isdir(output_three_state_dir_path):
     os.mkdir(output_three_state_dir_path)
 

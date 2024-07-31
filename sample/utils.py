@@ -5,7 +5,7 @@ def make_param_dict(Ns,N, T, prob, nu, dt, n_iter, Np, options = {'c1': 0.5, 'c2
     param_sim['Ns'] = Ns
     param_sim['n_trials'] = N
     param_sim['T'] = T
-    param_sim['prob'] = prob
+    param_sim['prob'] = prob.tolist()
     param_sim['nu'] = nu
     param_sim['dt'] = dt
 
