@@ -37,4 +37,9 @@ ehthumbs.db
 Thumbs.db
 
 # outputs #
+#######################
 output/*
+
+# python #
+#######################
+__pycache__
