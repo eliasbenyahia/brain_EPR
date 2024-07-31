@@ -1,7 +1,10 @@
 import numpy as np
+import os
 import sample.hm_simu as hms
 from sample.ps_entropy import compute_entropy_n
-
+from sample.utils import *
+import json
+import pickle
 
 
 prob = np.linspace(.1,.5, 5)
@@ -29,3 +32,26 @@ for j,p in enumerate(prob):
 
         sigma_infered[k,j] = sigma_p
         sigma_ex[k,j] = R/T
+
+output_dir_path = "output"
+
+if not os.path.isdir(output_dir_path):
+    os.mkdir(output_dir_path)
+
+output_three_state_dir_path = os.path.join(output_dir_path, "three_state")
+
+if not os.path.isdir(output_three_state_dir_path):
+    os.mkdir(output_three_state_dir_path)
+
+param_dict = make_param_dict(Ns,N, T, prob, nu, dt, n_iter, Np)
+param_filename = os.path.join(output_three_state_dir_path, "param.txt")
+with open(param_filename,'w') as param_file:
+    param_file.write(json.dumps(param_dict))
+
+sigma_infered_filename = os.path.join(output_three_state_dir_path, "infered_EPR.pkl")
+with open(sigma_infered_filename, 'wb') as f:
+    pickle.dump(sigma_infered, f)
+
+sigma_exact_filename = os.path.join(output_three_state_dir_path, "exact_EPR.pkl")
+with open(sigma_exact_filename, 'wb') as f:
+    pickle.dump(sigma_ex, f)
