@@ -46,6 +46,7 @@ def discretise(t_jump, ss,T, dt):
     Args:
         t_jump (list): jumping times
         ss (list): states
+        T (float): total time of simulation
         dt (float): discretisation time
 
     Returns:
@@ -62,7 +63,6 @@ def represent(ss_dis):
 
     Args:
         ss_dis (array(shape (int(T/dt),))): states at step times
-        Ns (int): number of states in the system
 
     Returns:
         array(shape (Ns,int(T/dt))): _description_

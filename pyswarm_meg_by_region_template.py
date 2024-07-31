@@ -13,7 +13,7 @@ import scipy.stats
 
 
 # Import entropy computations functions
-from entropy.ps_entropy import compute_entropy_n
+from sample.ps_entropy import compute_entropy_n
 
 # Import pca and svd
 import sklearn.decomposition
