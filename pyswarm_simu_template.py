@@ -33,7 +33,7 @@ if not os.path.isdir(dir_output_allshifts):
 
 output_filename = os.path.join(dir_output_allshifts, 'EPR_PCA' + str(n_components) + '_pyswarm_Np' + str(Np) + '_iter' + str(n_iter) + '.csv' )
 
-save_singular_values = True
+save_singular_values = False
 
 for s,shift in enumerate(shifts):
 
