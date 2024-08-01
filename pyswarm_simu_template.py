@@ -19,7 +19,7 @@ shifts = [0.25,0.5,0.75,1.0,1.5,2.0,2.5]
 dt = 1
 data = []
 df = pd.DataFrame()
-set = '1.5_35'
+set = '2.5_35'
 # Paths to data
 
 dir_simu = "./simu/perlin"
