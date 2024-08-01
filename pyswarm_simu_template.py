@@ -19,7 +19,7 @@ shifts = [0.25,0.5,0.75,1.0,1.5,2.0,2.5]
 dt = 1
 data = []
 df = pd.DataFrame()
-set = '2.5_35'
+set = '2.0_35'
 # Paths to data
 
 dir_simu = "../simu/perlin"
@@ -45,9 +45,9 @@ for n_components in n_components_range:
         dir_data_param = os.path.join(dir_data,data_param )
             
         for i in range(20):
-            print('\nn_components: ', n_components)
-            print('shift: ', shift)
-            print('seed: ', i)
+            print('\nn_components:', n_components)
+            print('shift:', shift)
+            print('seed:', i)
             filename_rate = os.path.join(dir_data_param, "rate_simplex_noise_baseline_"+ str(i) +".bn")
             if not os.path.isdir(dir_output_data):
                 os.mkdir(dir_output_data)
