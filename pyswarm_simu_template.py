@@ -60,9 +60,9 @@ for s,shift in enumerate(shifts):
         #                 n_components=n_components,
         #                 n_iter=5,
         #                 random_state=None)
-        U, Sigma, VT = LA.svd(data)
+        U, Sigma, Vh = LA.svd(data, full_matrices=False)
         scale = np.linalg.norm(Sigma) / np.sqrt(len(data))
-        data_pca=  scale * VT[:,:n_components]
+        data_pca=  scale * Vh[:n_components,:]
         sigma, pos,_= compute_entropy_n(data_pca, dt, n_iter=n_iter, Np=Np)
 
         df_simu = pd.DataFrame.from_dict({'sigma' :[sigma], 'shift' : [shift], 'seed': [i]})
