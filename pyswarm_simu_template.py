@@ -45,6 +45,7 @@ for n_components in n_components_range:
         dir_data_param = os.path.join(dir_data,data_param )
             
         for i in range(20):
+            print('\nn_components: ', n_components)
             print('shift: ', shift)
             print('seed: ', i)
             filename_rate = os.path.join(dir_data_param, "rate_simplex_noise_baseline_"+ str(i) +".bn")
