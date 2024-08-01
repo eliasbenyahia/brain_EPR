@@ -22,7 +22,7 @@ df = pd.DataFrame()
 set = '2.5_35'
 # Paths to data
 
-dir_simu = "./simu/perlin"
+dir_simu = "../simu/perlin"
 dir_data = os.path.join(dir_simu, 'data')
 dir_simu_output = os.path.join(dir_simu, 'output')
 if not os.path.isdir(dir_simu_output):
