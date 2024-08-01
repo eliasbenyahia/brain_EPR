@@ -14,7 +14,7 @@ from sample.ps_entropy import compute_entropy_n
 options = {'c1': 0.5, 'c2': 0.3, 'w':0.9, 'k': 2, 'p': 2}
 Np=200
 n_iter = 500
-n_components= 7 # for PCA
+n_components= 6 # for PCA
 shifts = [0.25,0.5,0.75,1.0,1.5,2.0,2.5]
 dt = 1
 data = []
