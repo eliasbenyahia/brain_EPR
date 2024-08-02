@@ -48,6 +48,8 @@ for s,shift in enumerate(shifts):
     output_filename = os.path.join(dir_output_data, 'EPR_shift' + str(shift) + '_pyswarm_Np' + str(Np) + '_iter' + str(n_iter) + '.csv' )
 
     for i in range(20):
+        print('\nshift:', shift)
+        print('seed:', i)
         filename_rate = os.path.join(dir_data_param, "rate_simplex_noise_baseline_"+ str(i) +".bn")
         sv_filename = os.path.join(dir_output_data, 'sv_seed' + str(i) +'.pkl')
         lsv_filename = os.path.join(dir_output_data, 'lsv_seed' + str(i) +'.pkl')
@@ -66,14 +68,11 @@ for s,shift in enumerate(shifts):
         scale = np.linalg.norm(Sigma) / np.sqrt(len(data))
         for n_components in n_components_range:
             
-            print('\nn_components:', n_components)
-            print('shift:', shift)
-            print('seed:', i)
-
+            print('n_components:', n_components)
             data_pca=  scale * VT[:n_components,:]
             sigma, pos,_= compute_entropy_n(data_pca, dt, n_iter=n_iter, Np=Np)
 
-            df_simu = pd.DataFrame.from_dict({'sigma' :[sigma], 'shift' : [shift], 'seed': [i]})
+            df_simu = pd.DataFrame.from_dict({'sigma' :[sigma], 'shift' : [shift], 'seed': [i], 'PCA' : [n_components]})
             df = pd.concat([df,df_simu], ignore_index=True)
             if save_singular_values:
                 with open(sv_filename, 'wb') as f:
